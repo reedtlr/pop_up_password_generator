@@ -39,6 +39,7 @@ function writePassword() {
   }
     return generatePassword(characterAmountEL)
   }
+  
  // function to generate a password based on user input and character sets 
  function generatePassword(characterAmountEL) {
   var charCodes = []
