@@ -19,16 +19,28 @@ generateBtn.addEventListener("click", e=> {
 // Write password to the #password input
 function writePassword() {
   var characterAmountEL = prompt("How long do you want your password? (8-128 characters)")
-  var includeLowercaseEL = confirm("Click 'ok' to include lowercase letters")
-  var includeUppercaseEL = confirm("Click 'ok' to include uppercase letters")
-  var includeNumbersEL = confirm("Click 'ok' to include numbers")
-  var includeSymbolsEL = confirm("Click 'ok' to include symbols")
+  if (characterAmountEL >128 || characterAmountEL <8){
+    alert("Please choose between 8 and 128 characters")
+    writePassword()
+  } else {
+    var includeLowercaseEL = confirm("Click 'ok' to include lowercase letters")
+    var includeUppercaseEL = confirm("Click 'ok' to include uppercase letters")
+    var includeNumbersEL = confirm("Click 'ok' to include numbers")
+    var includeSymbolsEL = confirm("Click 'ok' to include symbols")
+  }
+
   var includeLowercase = includeLowercaseEL.value
   var includeUppercase = includeUppercaseEL.value
   var includeNumbers = includeNumbersEL.value
   var includeSymbols = includeSymbolsEL.value
   var characterAmount = characterAmountEL.value
 
+  if (includeLowercaseEL != true && includeNumbersEL != true && includeSymbolsEL != true && includeUppercaseEL != true){
+    alert("You must select at least one type of character to contine")
+    writePassword()
+  } else {
+    generatePassword()
+  }
   function generatePassword(characterAmount, includeLowercase, includeNumbers, includeSymbols, includeUppercase) {
     var charCodes = []
     if (includeLowercase) charCodes = charCodes.concat(LOWERCASE_CHAR_CODES)
@@ -42,12 +54,14 @@ function writePassword() {
         passwordCharacters.push(String.fromCharCode(characterCode))
     }
     return passwordCharacters.join('')
+    document.getElementById("password").innerText =passwordCharacters
+    alert(passwordCharacters)
   }
 
 
   
   // passwordText.value = password;
-  passwordText.innerHTML = passwordCharacters;
+  // passwordText.textContent = password;
   
 }
 
