@@ -13,5 +13,4 @@ A password generator writen in javascript. The user can selet between 8 and 128 
 ## Technologies
 Project is created with:
 * HTML5, CSS3, Javascript
-
-## Sources
+![Image of the website](https://reedtlr.github.io/pop_up_password_generator/Assets/demo.png)

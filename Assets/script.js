@@ -13,7 +13,6 @@ generateBtn.addEventListener("click", e=> {
   e.preventDefault()
   var password 
   writePassword()
-  
 }) 
 
 // Write password to the #password input
@@ -53,16 +52,14 @@ function writePassword() {
         var characterCode = charCodes[Math.floor(Math.random() * charCodes.length)]
         passwordCharacters.push(String.fromCharCode(characterCode))
     }
-    return passwordCharacters.join('')
-    document.getElementById("password").innerText =passwordCharacters
-    alert(passwordCharacters)
+    passwordCharacters.join('') 
+
+    console.log(passwordCharacters)
+    document.getElementById("password").append = passwordCharacters
+    return alert(passwordCharacters)
+    
   }
 
-
-  
-  // passwordText.value = password;
-  // passwordText.textContent = password;
-  
 }
 
 // a loop to finds character sets for each type
