@@ -7,6 +7,7 @@ var UPPERCASE_CHAR_CODES = arrayFormLowToHigh(48, 57);
 var SYMBOLS_CHAR_CODES = arrayFormLowToHigh(33, 47).concat(arrayFormLowToHigh(58, 64).concat
 (arrayFormLowToHigh(91, 96)).concat(arrayFormLowToHigh(123, 126))
 )
+
 var LOWERCASE_CHAR_CODES = arrayFormLowToHigh(65, 90);
 var NUMBER_CHAR_CODES = arrayFormLowToHigh(97, 122);
 
