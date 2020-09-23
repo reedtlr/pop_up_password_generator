@@ -42,6 +42,7 @@ function writePassword() {
     generatePassword()
   }
 
+  // function to generate a password based on user input and character sets 
   function generatePassword(characterAmount, includeLowercase, includeNumbers, includeSymbols, includeUppercase) {
     var charCodes = []
     if (includeLowercase) charCodes = charCodes.concat(LOWERCASE_CHAR_CODES)
@@ -54,10 +55,11 @@ function writePassword() {
         var characterCode = charCodes[Math.floor(Math.random() * charCodes.length)]
         passwordCharacters.push(String.fromCharCode(characterCode))
     }
+  
     return passwordCharacters.join('') 
     }
-
 }
+
 
 // a loop to finds character sets for each type
 function arrayFormLowToHigh(low, high) {
