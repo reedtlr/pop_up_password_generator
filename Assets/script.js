@@ -2,13 +2,16 @@ var generateBtn = document.querySelector("#generate");
 var passwordText = document.getElementById("#password");
 
 // character codes in ASCII to avoid listing each character 
-var UPPERCASE_CHAR_CODES = arrayFormLowToHigh(48, 57);
+var UPPERCASE_CHAR_CODES = arrayFormLowToHigh(65, 90);
+
+
 var SYMBOLS_CHAR_CODES = arrayFormLowToHigh(33, 47).concat(arrayFormLowToHigh(58, 64).concat
 (arrayFormLowToHigh(91, 96)).concat(arrayFormLowToHigh(123, 126))
 )
 
-var LOWERCASE_CHAR_CODES = arrayFormLowToHigh(65, 90);
-var NUMBER_CHAR_CODES = arrayFormLowToHigh(97, 122);
+var LOWERCASE_CHAR_CODES = arrayFormLowToHigh(97, 122);
+var NUMBER_CHAR_CODES = arrayFormLowToHigh(48, 57);
+
 
 generateBtn.addEventListener("click", e=> {
   e.preventDefault()
@@ -34,22 +37,28 @@ function writePassword() {
   if (includeLowercaseEL !== true && includeNumbersEL !== true && includeSymbolsEL !== true && includeUppercaseEL !== true){
     alert("You must select at least one type of character to continue")
     writePassword()
-  } else {
-    generatePassword(characterAmountEL)
-  }
-    return generatePassword(characterAmountEL)
+  } 
+    var results = {
+      characterAmountEL: characterAmountEL, 
+      includeLowercaseEL: includeLowercaseEL,
+      includeNumbersEL: includeNumbersEL,
+      includeSymbolsEL: includeSymbolsEL,
+      includeUppercaseEL: includeUppercaseEL
+    }
+    return generatePassword(results)
   }
   
+
  // function to generate a password based on user input and character sets 
- function generatePassword(characterAmountEL) {
+ function generatePassword(results) {
+  var options = results;
   var charCodes = []
-  if (includeLowercaseEL = true) charCodes = charCodes.concat(LOWERCASE_CHAR_CODES);
-  if (includeUppercaseEL = true) charCodes = charCodes.concat(UPPERCASE_CHAR_CODES);
-  if (includeNumbersEL = true) charCodes = charCodes.concat(NUMBER_CHAR_CODES);
-  if (includeSymbolsEL = true) charCodes = charCodes.concat(SYMBOLS_CHAR_CODES); 
-  
+  if (options.includeLowercaseEL === true) charCodes = charCodes.concat(LOWERCASE_CHAR_CODES);
+  if (options.includeUppercaseEL === true) charCodes = charCodes.concat(UPPERCASE_CHAR_CODES);
+  if (options.includeNumbersEL === true) charCodes = charCodes.concat(NUMBER_CHAR_CODES);
+  if (options.includeSymbolsEL === true) charCodes = charCodes.concat(SYMBOLS_CHAR_CODES); 
   var passwordCharacters = []
-  for (var i = 0; i < characterAmountEL; i++) {
+  for (var i = 0; i < options.characterAmountEL; i++) {
       var characterCode = charCodes[Math.floor(Math.random() * charCodes.length)];
       passwordCharacters.push(String.fromCharCode(characterCode));
   }
