@@ -24,6 +24,7 @@ function writePassword() {
   var characterAmountEL = prompt("How long do you want your password? (8-128 characters)")
   if (characterAmountEL >128 || characterAmountEL <8){
     alert("Please choose between 8 and 128 characters")
+    document.querySelector("#password").textContent = " ";
     return
   } else {
     var includeLowercaseEL = confirm("Click 'ok' to include lowercase letters")
@@ -51,6 +52,7 @@ function writePassword() {
 
  // function to generate a password based on user input and character sets 
  function generatePassword(results) {
+   document.querySelector("#password").textContent = ""
   var options = results;
   var charCodes = []
   if (options.includeLowercaseEL === true) charCodes = charCodes.concat(LOWERCASE_CHAR_CODES);
